@@ -3,7 +3,9 @@
  */
 
 // const { test } = require("node:test");
-const { game } = require("../game");
+const { describe } = require("yargs");
+const { game, newGame } = require("../game");
+const { test } = require("node:test");
 
 beforeAll(() => {
     let fs = require("fs");
@@ -30,3 +32,13 @@ describe("game object contains correct keys", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
     })
 });
+
+describe("new game works correctly", ( {
+    beforeAll(() => {
+        game.score = 42
+        newGame();
+    });
+    test("should set game score to zero", () => {
+        expect("game.score").toEqual(0);
+    };
+}));
